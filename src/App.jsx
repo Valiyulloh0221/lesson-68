@@ -29,10 +29,10 @@ function App() {
           <ul>
             {todoList.map((singleTodo, index) => {
               return (
-              <li key={index} className="bg-black mb-5 py-5 rounded-lg text-2xl px-5 flex justify-between text-white">
-                {singleTodo.todoName}{""} 
-                <span onClick={() => deleteTodo(singleTodo.todoName)} className="text-red-600 cursor-pointer">x</span>
-              </li>
+                <li key={index} className="bg-black mb-5 py-5 rounded-lg text-2xl px-5 flex justify-between text-white">
+                  {singleTodo.todoName}{""} 
+                  <span onClick={() => deleteTodo(singleTodo.todoName)} className="text-red-600 cursor-pointer">x</span>
+                </li>
               );
             })}
           </ul>
