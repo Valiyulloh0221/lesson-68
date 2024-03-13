@@ -1,4 +1,4 @@
-import { list } from "postcss";
+
 import { useState } from "react"
 
 function App() {
@@ -9,7 +9,14 @@ function App() {
     setTodoList([...todoList, {todoName: todo}]);
     setTodo("");
   };
-  console.log(todoList);
+
+  const deleteTodo = (deleteValue) => {
+    const restTodoList = [...todoList.filter((val) => {
+      return val.todoName !== deleteValue;
+    }),];
+    setTodoList(restTodoList);
+  }
+
   return (
     <div className="bg-gray-200 w-full h-screen flex items-center">
       <div className="text-center w-[400px] bg-white p-5 mx-auto">
@@ -20,10 +27,13 @@ function App() {
         </form>
         <div className="todo-show-area">
           <ul>
-            {todoList.map((singleTodo) => {
-              <li className="bg-black py-5 rounded-lg text-2xl px-5 flex justify-between text-white">
-                {singleTodo.todoName}{""} <span className="text-red-600 cursor-pointer">x</span>
+            {todoList.map((singleTodo, index) => {
+              return (
+              <li key={index} className="bg-black mb-5 py-5 rounded-lg text-2xl px-5 flex justify-between text-white">
+                {singleTodo.todoName}{""} 
+                <span onClick={() => deleteTodo(singleTodo.todoName)} className="text-red-600 cursor-pointer">x</span>
               </li>
+              );
             })}
           </ul>
         </div>
